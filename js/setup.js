@@ -37,7 +37,9 @@ var renderWizard = function (wizard) {
 };
 
 var onCloseSetup = function (evt) {
-  if (evt.keyCode === KEYCODE_ESC) {
+  var currentElement = evt.target;
+  var inputUserName = setup.querySelector('.setup-user-name');
+  if (evt.keyCode === KEYCODE_ESC && currentElement !== inputUserName) {
     closeSetupHandler();
   }
 };
@@ -53,22 +55,17 @@ var closeSetupHandler = function () {
 };
 
 document.querySelector('.setup-open').addEventListener('click', openSetupHandler);
-setup.querySelector('.setup-close').addEventListener('click', closeSetupHandler);
-
 document.querySelector('.setup-open').addEventListener('keydown', function (evt) {
   if (evt.keyCode === KEYCODE_ENTER) {
     openSetupHandler();
   }
 });
 
+setup.querySelector('.setup-close').addEventListener('click', closeSetupHandler);
 setup.querySelector('.setup-close').addEventListener('keydown', function (evt) {
   if (evt.keyCode === KEYCODE_ENTER) {
     closeSetupHandler();
   }
-});
-
-setup.querySelector('.setup-user-name').addEventListener('focus', function () {
-  document.removeEventListener('keydown', onCloseSetup);
 });
 
 document.querySelector('.wizard-coat').addEventListener('click', function (evt) {
