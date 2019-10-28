@@ -3,7 +3,6 @@
   var wizards = [];
   var colorCoat;
   var colorEyes;
-  var timeout;
   var setup = document.querySelector('.setup');
   var form = setup.querySelector('.setup-wizard-form');
   /*
